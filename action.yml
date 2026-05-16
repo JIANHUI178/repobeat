@@ -1,9 +1,9 @@
-name: "RepoBeat — 代码仓库心跳巡检"
-description: "每次 push 自动给仓库做体检：依赖过期、密钥泄露、代码坏味、贡献者集中度。零配置，两行即用。"
-author: "RepoBeat"
+name: "RepoBeat — Code Repository Health Check"
+description: "Scan your repo on every push: outdated deps, leaked secrets, code smells, bus factor risk."
+author: "JIANHUI178"
 
 branding:
-  icon: "activity"
+  icon: "heart"
   color: "green"
 
 inputs:
