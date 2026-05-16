@@ -144,13 +144,23 @@ class GitScanner {
 
   /** 分支健康度 */
   getBranchHealth() {
-    const branches = this._exec("branch --format='%(refname:short)|%(committerdate:short)'")
+    // 获取所有本地分支名称
+    const branchNames = this._exec("branch")
       .split("\n")
       .filter(Boolean)
-      .map((line) => {
-        const [name, date] = line.split("|");
+      .map((l) => l.replace(/^\*?\s+/, ""));
+
+    // 逐个获取最后提交日期
+    const branches = branchNames.map((name) => {
+      try {
+        const date = execSync(`git log -1 --format="%cs" "${name}" --`, {
+          cwd: this.repoPath, encoding: "utf-8", stdio: "pipe",
+        }).trim();
         return { name, lastCommitDate: date || "未知" };
-      });
+      } catch {
+        return { name, lastCommitDate: "未知" };
+      }
+    });
 
     const current = this._exec("rev-parse --abbrev-ref HEAD");
 

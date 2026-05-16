@@ -1,0 +1,28 @@
+{
+  "示例项目": [
+    {
+      "date": "2026-05-16",
+      "commitActivity": {
+        "period": "90天",
+        "totalCommits": 1,
+        "avgPerDay": 0.01,
+        "activeDays": 1,
+        "consistency": 1.1,
+        "uniqueAuthors": 1,
+        "topAuthors": [
+          {
+            "name": "RepoHealth Scanner",
+            "count": 1
+          }
+        ],
+        "activityScore": 7,
+        "isHealthy": false
+      },
+      "overallHealthScore": 100,
+      "securityScore": 0,
+      "totalOutdated": 0,
+      "totalVulnerabilities": 0,
+      "codeSmells": 1
+    }
+  ]
+}
