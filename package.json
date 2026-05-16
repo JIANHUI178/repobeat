@@ -1,0 +1,11 @@
+{
+  "name": "repo-health",
+  "version": "1.0.0",
+  "description": "自动化代码仓库健康巡检系统 — 定期扫描 Git 仓库，生成多维健康报告",
+  "main": "src/index.js",
+  "scripts": {
+    "scan": "node src/index.js",
+    "report": "node src/index.js --report-only"
+  },
+  "license": "MIT"
+}

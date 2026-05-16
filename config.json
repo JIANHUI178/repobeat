@@ -1,0 +1,24 @@
+{
+  "repositories": [
+    {
+      "name": "示例项目",
+      "path": "./",
+      "enabled": true
+    }
+  ],
+  "thresholds": {
+    "largeFileKB": 500,
+    "inactiveDays": 90,
+    "maxDependencyAgeDays": 180,
+    "maxContributorRisk": 0.6
+  },
+  "output": {
+    "reportDir": "./reports",
+    "dataDir": "./data",
+    "format": "markdown"
+  },
+  "schedule": {
+    "enabled": true,
+    "cron": "0 8 * * 1"
+  }
+}
