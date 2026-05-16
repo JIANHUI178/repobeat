@@ -1,0 +1,4 @@
+activity-score=8
+dependency-score=100
+security-score=60
+report-file=D:\流水线1\repo-health\repo-health-output\report-2026-05-16.md

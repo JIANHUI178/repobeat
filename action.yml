@@ -1,0 +1,78 @@
+name: "RepoHealth — 代码仓库健康巡检"
+description: "自动扫描 Git 仓库的四维健康指标，生成报告并追踪趋势"
+author: "RepoHealth"
+
+branding:
+  icon: "activity"
+  color: "green"
+
+inputs:
+  repo-path:
+    description: "要扫描的仓库路径"
+    required: false
+    default: "."
+
+  fail-on-critical:
+    description: "发现严重安全问题时是否让 workflow 失败"
+    required: false
+    default: "true"
+
+  fail-on-score-below:
+    description: "整体健康评分低于此值时让 workflow 失败（0 禁用）"
+    required: false
+    default: "0"
+
+  comment-on-pr:
+    description: "是否在 Pull Request 中自动评论巡检结果"
+    required: false
+    default: "true"
+
+  github-token:
+    description: "用于发布 PR 评论的 Token"
+    required: false
+    default: ${{ github.token }}
+
+  artifact-name:
+    description: "上传报告 artifact 的名称前缀"
+    required: false
+    default: "repo-health-report"
+
+outputs:
+  activity-score:
+    description: "Git 提交活跃度评分 (0-100)"
+    value: ${{ steps.scan.outputs.activity-score }}
+
+  dependency-score:
+    description: "依赖健康评分 (0-100)"
+    value: ${{ steps.scan.outputs.dependency-score }}
+
+  security-score:
+    description: "安全评分 (0-100)"
+    value: ${{ steps.scan.outputs.security-score }}
+
+  report-file:
+    description: "生成的报告文件路径"
+    value: ${{ steps.scan.outputs.report-file }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: 运行 RepoHealth 巡检
+      id: scan
+      shell: bash
+      run: node ${{ github.action_path }}/src/entrypoint.js
+      env:
+        REPO_PATH: ${{ inputs.repo-path }}
+        FAIL_ON_CRITICAL: ${{ inputs.fail-on-critical }}
+        FAIL_ON_SCORE_BELOW: ${{ inputs.fail-on-score-below }}
+        COMMENT_ON_PR: ${{ inputs.comment-on-pr }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        ARTIFACT_NAME: ${{ inputs.artifact-name }}
+        GITHUB_WORKSPACE: ${{ github.workspace }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+        GITHUB_SHA: ${{ github.sha }}
+        GITHUB_REF: ${{ github.ref }}
+        GITHUB_EVENT_NAME: ${{ github.event_name }}
+        GITHUB_EVENT_PATH: ${{ github.event_path }}
+        GITHUB_STEP_SUMMARY: ${{ github.step_summary }}
+        GITHUB_OUTPUT: ${{ github.output }}
