@@ -1,4 +1,4 @@
-name: RepoHealth 巡检
+name: RepoBeat 巡检
 
 on:
   push:
@@ -16,8 +16,8 @@ jobs:
         with:
           fetch-depth: 0  # 获取完整历史以准确分析活跃度
 
-      - name: RepoHealth 巡检
-        uses: repohealth/action@v1
+      - name: RepoBeat 巡检
+        uses: repobeat/action@v1
         with:
           fail-on-critical: "true"
           fail-on-score-below: "50"

@@ -1,6 +1,6 @@
-name: "RepoHealth — 代码仓库健康巡检"
-description: "自动扫描 Git 仓库的四维健康指标，生成报告并追踪趋势"
-author: "RepoHealth"
+name: "RepoBeat — 代码仓库心跳巡检"
+description: "每次 push 自动给仓库做体检：依赖过期、密钥泄露、代码坏味、贡献者集中度。零配置，两行即用。"
+author: "RepoBeat"
 
 branding:
   icon: "activity"

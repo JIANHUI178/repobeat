@@ -1,7 +1,7 @@
 {
-  "name": "repo-health",
+  "name": "repobeat",
   "version": "1.0.0",
-  "description": "自动化代码仓库健康巡检系统 — 定期扫描 Git 仓库，生成多维健康报告",
+  "description": "RepoBeat — 代码仓库心跳巡检，每次 push 自动体检",
   "main": "src/index.js",
   "scripts": {
     "scan": "node src/index.js",

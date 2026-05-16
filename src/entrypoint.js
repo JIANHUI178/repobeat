@@ -72,7 +72,7 @@ function writeSummary(report, scores) {
   const statusIcon =
     totalScore >= 80 ? "🟢" : totalScore >= 50 ? "🟡" : "🔴";
 
-  lines.push(`# ${statusIcon} RepoHealth 巡检报告`);
+  lines.push(`# ${statusIcon} RepoBeat 巡检报告`);
   lines.push("");
   lines.push(`| 维度 | 评分 | 状态 |`);
   lines.push(`|------|------|------|`);
@@ -141,7 +141,7 @@ function writeSummary(report, scores) {
   }
 
   lines.push("");
-  lines.push("> 🤖 由 [RepoHealth](https://github.com/marketplace/actions/repohealth) 自动生成");
+  lines.push("> 🤖 由 [RepoBeat](https://github.com/marketplace/actions/repohealth) 自动生成");
 
   fs.writeFileSync(summaryFile, lines.join("\n") + "\n", "utf-8");
 }
@@ -161,7 +161,7 @@ function postPRComment(scores, report) {
     total >= 80 ? "✅ 健康" : total >= 50 ? "⚠️ 需关注" : "🔴 有风险";
 
   const body = [
-    `## ${statusIcon} RepoHealth 巡检结果`,
+    `## ${statusIcon} RepoBeat 巡检结果`,
     "",
     `| 维度 | 评分 |`,
     `|------|------|`,
@@ -204,7 +204,7 @@ function postPRComment(scores, report) {
   }
 
   body.push("");
-  body.push("<sub>🤖 由 RepoHealth 自动生成</sub>");
+  body.push("<sub>🤖 由 RepoBeat 自动生成</sub>");
 
   // 通过 GitHub API 发布评论
   const eventPath = process.env.GITHUB_EVENT_PATH;
@@ -259,7 +259,7 @@ function writeOutputs(scores, reportFile) {
 
 // ─── 主流程 ─────────────────────────────────────────────────────
 function main() {
-  console.log(`🚀 RepoHealth 启动`);
+  console.log(`🚀 RepoBeat 启动`);
   console.log(`  仓库路径: ${repoPath}`);
   console.log(`  事件类型: ${eventName}`);
   console.log(`  PR 模式: ${isPR ? "是" : "否"}`);
@@ -328,7 +328,7 @@ function main() {
 
   if (hasFailure) process.exit(1);
 
-  console.log("✅ RepoHealth 巡检完成");
+  console.log("✅ RepoBeat 巡检完成");
 }
 
 module.exports = { main };

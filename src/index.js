@@ -6,7 +6,7 @@ const { Reporter } = require("./reporter");
 const fs = require("fs");
 const path = require("path");
 
-class RepoHealth {
+class RepoBeat {
   constructor(configPath = null) {
     this.configPath = configPath || path.join(__dirname, "..", "config.json");
     this.config = JSON.parse(fs.readFileSync(this.configPath, "utf-8"));
@@ -104,7 +104,7 @@ async function main() {
   const args = process.argv.slice(2);
   const reportOnly = args.includes("--report-only") || args.includes("-r");
 
-  const health = new RepoHealth();
+  const health = new RepoBeat();
 
   if (reportOnly) {
     // 仅基于已有数据生成趋势报告
@@ -126,4 +126,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { RepoHealth };
+module.exports = { RepoBeat };

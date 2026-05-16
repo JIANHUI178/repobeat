@@ -1,6 +1,6 @@
-# RepoHealth — 代码仓库健康巡检
+# RepoBeat — 代码仓库健康巡检
 
-[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-RepoHealth-green?logo=github)](https://github.com/marketplace/actions/repohealth)
+[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-RepoBeat-green?logo=github)](https://github.com/marketplace/actions/repobeat)
 
 **每次 push 自动给你的仓库做体检：依赖是否过期、有没有密钥泄露、代码质量趋势如何。零配置，两行就能用。**
 
@@ -8,10 +8,10 @@
 
 ## 快速开始
 
-在你的仓库创建 `.github/workflows/repohealth.yml`：
+在你的仓库创建 `.github/workflows/repobeat.yml`：
 
 ```yaml
-name: RepoHealth 巡检
+name: RepoBeat 巡检
 on:
   push:
     branches: [main, master]
@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: repohealth/action@v1
+      - uses: repobeat/action@v1
 ```
 
 提交后，每次 push 和 PR 都会自动运行，结果直接显示在 PR 评论和 Actions 摘要里。
@@ -66,7 +66,7 @@ jobs:
 ## 高级用法
 
 ```yaml
-- uses: repohealth/action@v1
+- uses: repobeat/action@v1
   with:
     fail-on-critical: "true"         # 发现密钥泄露直接失败
     fail-on-score-below: "50"        # 任一项低于 50 分 CI 失败
@@ -81,7 +81,7 @@ jobs:
 ## 本地使用
 
 ```bash
-git clone https://github.com/repohealth/action.git
+git clone https://github.com/repobeat/action.git
 cd action
 node src/index.js
 ```
@@ -98,4 +98,4 @@ node src/index.js
 
 ## 许可证
 
-MIT © 2026 RepoHealth
+MIT © 2026 RepoBeat

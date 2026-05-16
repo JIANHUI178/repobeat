@@ -25,7 +25,7 @@ class Reporter {
     const sec = securityResult;
 
     let md = "";
-    md += `# 📊 RepoHealth 巡检报告\n\n`;
+    md += `# 📊 RepoBeat 巡检报告\n\n`;
     md += `**仓库**: ${repoName}  |  **扫描时间**: ${now}\n\n`;
     md += `---\n\n`;
 
@@ -190,7 +190,7 @@ class Reporter {
       md += `🎉 仓库整体健康，暂无需要立即处理的问题。\n`;
     }
 
-    md += `\n---\n> 🤖 由 RepoHealth 自动生成 | ${now}\n`;
+    md += `\n---\n> 🤖 由 RepoBeat 自动生成 | ${now}\n`;
 
     return md;
   }
